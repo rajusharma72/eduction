@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeShiksha | Learn Programming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+             <div class="logo-container">
+                <div class="logo-icon">E</div>
+                <span class="logo-text" style="color: white;">Edu<span>Smart</span></span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+    
+                <li><a href="About.html">About</a></li>
+                <li><a href="notes.html">Notes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Education is the process of learning knowledge</h1> 
+        <p>I am currently a high school student with a strong interest in learning and personal development. <br>
+            My studies focus on core academic subjects, and I actively work on improving my skills, discipline, and problem-solving abilities.
+            <br>
+            Education is the process of learning knowledge, skills, values, and habits through study, teaching, and experience
+        </p>
+        
+    </section>
+
+    <section id="courses" class="course-grid">
+        <div class="card">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.L0QriE9s9rT43YdhQX5JggHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="STUDY">
+            <h3>BOOK</h3>
+            
+        </div>
+        <div class="card">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.uHg9sCIUCaJEYqLdIJBmEQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="BOOK">
+            <h3>BOOK</h3>
+            
+        </div>
+        <div class="card">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.ETA5gb7W8TK2WTP_1XQR9wHaD3?rs=1&pid=ImgDetMain&o=7&rm=3" alt="EXAM QUETION PAPER">
+            <h3>EXAM QUETION PAPER</h3>
+            
+        </div>
+        <div class="card">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.iuQhtnhW8AkaRpsW-JT80AAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="JS">
+            <h3>EXAm date</h3>
+            
+        </div>
+    </section>
+</body>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <div class="logo-container">
+                <div class="logo-icon">E</div>
+                <span class="logo-text" style="color: white;">Edu<span>Smart</span></span>
+            </div>
+            <p class="footer-desc">
+                Hindustan ka sabse bharosemand platform RRB, JEE, aur Computer Science ki taiyari ke liye.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Exams</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+    
+                <li><a href="About.html">About</a></li>
+                <li><a href="notes.html">Notes</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <p>📧 support@edusmart.com</p>
+            <p>📞 +91 98765 43210</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/">FB</a>
+                <a href="#">IG</a>
+                <a href="#">YT</a>
+                <a href="#">LI</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2026 EduSmart Education. All Rights Reserved.</p>
+    </div>
+</footer>
+</html>
