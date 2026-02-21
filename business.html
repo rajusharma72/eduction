@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF & Image Master Suite - Business</title>
+    <!-- Outfit Font (Premium look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PDF Libraries (Kept for consistency, though unused in this view mainly) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- App Container -->
+    <div id="app-container">
+
+        <!-- Standard Window Title Bar (Mockup) -->
+        <div id="title-bar">
+            <div class="title-bar-left">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Icon" class="app-icon">
+                <span class="app-title">PDF & Image Master Suite - Business</span>
+            </div>
+            <div class="title-bar-right">
+                <div class="window-control minimize"><i class="fa-solid fa-minus"></i></div>
+                <div class="window-control maximize"><i class="fa-regular fa-square"></i></div>
+                <div class="window-control close"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+        </div>
+
+        <!-- 1. Start Screen (Default View) -->
+        <div id="start-screen">
+            <div id="start-sidebar">
+                <div class="sidebar-header">
+                    <h2>Navigation</h2>
+                </div>
+                <ul class="sidebar-menu">
+                    <li onclick="window.location.href='index.html'"><i class="fa-solid fa-house"></i> (PDF Tools)
+                    </li>
+                    <li class="active"><i class="fa-solid fa-briefcase"></i> Business Tools</li>
+                    <li onclick="window.location.href='calculators.html'"><i class="fa-solid fa-calculator"></i>
+                        Business Calculators</li>
+                </ul>
+            </div>
+
+            <div id="start-content">
+                <div class="start-content-header">
+                    <h3>Business Tools</h3>
+                </div>
+                <!-- Business Tools Grid -->
+                <div class="tools-grid-desktop" style="margin-bottom: 40px;">
+                    <div class="tool-list-item" onclick="app.loadTool('biz-dashboard')">
+                        <div class="tool-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="tool-info">
+                            <h4>Business Dashboard</h4>
+                            <p>Manage business stuff</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-analytics')">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="tool-info">
+                            <h4>Business Analytics</h4>
+                            <p>View analytics</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-invoice')">
+                        <div class="tool-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                        <div class="tool-info">
+                            <h4>Invoice Generator</h4>
+                            <p>Create invoices</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-expense')">
+                        <div class="tool-icon"><i class="fa-solid fa-receipt"></i></div>
+                        <div class="tool-info">
+                            <h4>Expense Tracker</h4>
+                            <p>Track expenses</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-payments')">
+                        <div class="tool-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="tool-info">
+                            <h4>Payments Manager</h4>
+                            <p>Manage payments</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-revenue')">
+                        <div class="tool-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                        <div class="tool-info">
+                            <h4>Revenue Reports</h4>
+                            <p>View revenue</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-profile')">
+                        <div class="tool-icon"><i class="fa-solid fa-building"></i></div>
+                        <div class="tool-info">
+                            <h4>Company Profile</h4>
+                            <p>Edit company details</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-clients')">
+                        <div class="tool-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="tool-info">
+                            <h4>Client Management</h4>
+                            <p>Manage clients</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-vendor')">
+                        <div class="tool-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <div class="tool-info">
+                            <h4>Vendor Management</h4>
+                            <p>Manage vendors</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-team')">
+                        <div class="tool-icon"><i class="fa-solid fa-people-group"></i></div>
+                        <div class="tool-info">
+                            <h4>Team Management</h4>
+                            <p>Manage team</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-attendance')">
+                        <div class="tool-icon"><i class="fa-solid fa-user-clock"></i></div>
+                        <div class="tool-info">
+                            <h4>Attendance System</h4>
+                            <p>Track attendance</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="app.loadTool('biz-leave')">
+                        <div class="tool-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                        <div class="tool-info">
+                            <h4>Leave Management</h4>
+                            <p>Manage leaves</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                        <div class="tool-info">
+                            <h4>Task Management</h4>
+                            <p>Manage tasks</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                        <div class="tool-info">
+                            <h4>Project Management</h4>
+                            <p>Manage projects</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <div class="tool-info">
+                            <h4>Deal Manager</h4>
+                            <p>Manage deals</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-file-contract"></i></div>
+                        <div class="tool-info">
+                            <h4>Agreement Builder</h4>
+                            <p>Create agreements</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div class="tool-info">
+                            <h4>Legal Compliance</h4>
+                            <p>Check compliance</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="tool-info">
+                            <h4>Risk Management</h4>
+                            <p>Manage risks</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-user-shield"></i></div>
+                        <div class="tool-info">
+                            <h4>Access Control</h4>
+                            <p>Manage access</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-lock"></i></div>
+                        <div class="tool-info">
+                            <h4>Data Security</h4>
+                            <p>Secure data</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-database"></i></div>
+                        <div class="tool-info">
+                            <h4>Business Database</h4>
+                            <p>Manage database</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-cloud"></i></div>
+                        <div class="tool-info">
+                            <h4>Cloud Storage</h4>
+                            <p>Manage storage</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-server"></i></div>
+                        <div class="tool-info">
+                            <h4>Server Monitor</h4>
+                            <p>Monitor servers</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-headset"></i></div>
+                        <div class="tool-info">
+                            <h4>Customer Support</h4>
+                            <p>Support desk</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-comments"></i></div>
+                        <div class="tool-info">
+                            <h4>Live Chat</h4>
+                            <p>Engage customers</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                        <div class="tool-info">
+                            <h4>Email Campaigns</h4>
+                            <p>Send emails</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                        <div class="tool-info">
+                            <h4>Marketing Tools</h4>
+                            <p>Marketing suite</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                        <div class="tool-info">
+                            <h4>Sales Funnel</h4>
+                            <p>Track sales</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <div class="tool-info">
+                            <h4>Order Management</h4>
+                            <p>Manage orders</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div class="tool-info">
+                            <h4>Logistics Manager</h4>
+                            <p>Track shipments</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <div class="tool-info">
+                            <h4>Inventory Control</h4>
+                            <p>Manage stock</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-qrcode"></i></div>
+                        <div class="tool-info">
+                            <h4>QR Billing</h4>
+                            <p>Generate QR bills</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-barcode"></i></div>
+                        <div class="tool-info">
+                            <h4>Barcode Generator</h4>
+                            <p>Make barcodes</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-store"></i></div>
+                        <div class="tool-info">
+                            <h4>Store Manager</h4>
+                            <p>Manage store</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div class="tool-info">
+                            <h4>Online Business</h4>
+                            <p>Web tools</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-sitemap"></i></div>
+                        <div class="tool-info">
+                            <h4>Business Workflow</h4>
+                            <p>Design workflows</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="tool-info">
+                            <h4>CRM Integrations</h4>
+                            <p>Connect CRMs</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-plug"></i></div>
+                        <div class="tool-info">
+                            <h4>Plugin Manager</h4>
+                            <p>Manage plugins</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-user-gear"></i></div>
+                        <div class="tool-info">
+                            <h4>Admin Settings</h4>
+                            <p>System settings</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-gear"></i></div>
+                        <div class="tool-info">
+                            <h4>Configuration</h4>
+                            <p>Business config</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <div class="tool-info">
+                            <h4>Audit Manager</h4>
+                            <p>Perform audits</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-file-shield"></i></div>
+                        <div class="tool-info">
+                            <h4>Compliance Reports</h4>
+                            <p>View reports</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-column"></i></div>
+                        <div class="tool-info">
+                            <h4>Financial Statements</h4>
+                            <p>View financials</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-building-columns"></i></div>
+                        <div class="tool-info">
+                            <h4>Tax & GST Tools</h4>
+                            <p>Manage taxes</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <div class="tool-info">
+                            <h4>Accounting Tools</h4>
+                            <p>Accounting suite</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-coins"></i></div>
+                        <div class="tool-info">
+                            <h4>Profit & Loss</h4>
+                            <p>Manage P&L</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                        <div class="tool-info">
+                            <h4>Budget Planner</h4>
+                            <p>Plan budget</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-scale-unbalanced-flip"></i></div>
+                        <div class="tool-info">
+                            <h4>Legal Risk Analyzer</h4>
+                            <p>Analyze risks</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="tool-info">
+                            <h4>Business Goals</h4>
+                            <p>Set goals</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div class="tool-info">
+                            <h4>Ideas Hub</h4>
+                            <p>Brainstorm ideas</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-robot"></i></div>
+                        <div class="tool-info">
+                            <h4>AI Assistant</h4>
+                            <p>Get help</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-area"></i></div>
+                        <div class="tool-info">
+                            <h4>Growth Tracker</h4>
+                            <p>Track growth</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-award"></i></div>
+                        <div class="tool-info">
+                            <h4>Certification</h4>
+                            <p>Manage certs</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="tool-info">
+                            <h4>Training</h4>
+                            <p>Employee training</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-book"></i></div>
+                        <div class="tool-info">
+                            <h4>Knowledge Base</h4>
+                            <p>View docs</p>
+                        </div>
+                    </div>
+                    <div class="tool-list-item" onclick="alert('Coming soon!')">
+                        <div class="tool-icon"><i class="fa-solid fa-circle-question"></i></div>
+                        <div class="tool-info">
+                            <h4>Help Center</h4>
+                            <p>Get support</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

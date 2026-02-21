@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF & Image Master Suite</title>
+    <!-- Outfit Font (Premium look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- App Container -->
+    <div id="app-container">
+
+        <!-- Standard Window Title Bar (Mockup) -->
+        <div id="title-bar">
+            <div class="title-bar-left">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Icon" class="app-icon">
+                <span class="app-title">PDF & Image Master Suite</span>
+            </div>
+            <div class="title-bar-right">
+                <div class="window-control minimize"><i class="fa-solid fa-minus"></i></div>
+                <div class="window-control maximize"><i class="fa-regular fa-square"></i></div>
+                <div class="window-control close"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+        </div>
+
+        <!-- 1. Start Screen (Default View) -->
+        <div id="start-screen">
+            <div id="start-sidebar">
+                <div class="sidebar-header">
+                    <h2>File</h2>
+
+
+                </div>
+                <ul class="sidebar-menu">
+                    <li onclick="window.location.href='business.html'"><i class="fa-solid fa-briefcase"></i> Business
+                        Tools</li>
+                    <li onclick="window.location.href='calculators.html'"><i class="fa-solid fa-calculator"></i>
+                        Business Calculators</li>
+                    <!-- PDF Tools -->
+                    <li><i class="fa-solid fa-compress"></i> Compress PDF</li>
+                    <li><i class="fa-solid fa-file-pdf"></i> Merge PDF</li>
+                    <li><i class="fa-solid fa-scissors"></i> Split PDF</li>
+                    <li><i class="fa-solid fa-stamp"></i> Add Stamp Paper</li>
+                    <li><i class="fa-solid fa-signature"></i> Add Signature</li>
+                    <li><i class="fa-solid fa-lock"></i> Protect PDF</li>
+                    <li><i class="fa-solid fa-unlock"></i> Unlock PDF</li>
+                    <li><i class="fa-solid fa-rotate"></i> Rotate PDF</li>
+                    <li><i class="fa-solid fa-file-pdf"></i> Flatten PDF</li>
+                    <li><i class="fa-solid fa-layer-group"></i> Remove Layers</li>
+                    <li><i class="fa-solid fa-heading"></i> Add Header Footer</li>
+                    <li><i class="fa-solid fa-text-height"></i> Resize Text</li>
+                    <li><i class="fa-solid fa-arrows-up-down-left-right"></i> Resize Pages</li>
+                    <li><i class="fa-solid fa-object-group"></i> Group Objects</li>
+                    <li><i class="fa-solid fa-object-ungroup"></i> Ungroup Objects</li>
+                    <li><i class="fa-solid fa-fill-drip"></i> Fill Background</li>
+                    <li><i class="fa-solid fa-eraser"></i> Erase Content</li>
+                    <li><i class="fa-solid fa-file-circle-exclamation"></i> Repair PDF</li>
+                    <li><i class="fa-solid fa-chart-pie"></i> PDF Analytics</li>
+                    <li><i class="fa-solid fa-folder-tree"></i> Organize Files</li>
+                    <li><i class="fa-solid fa-arrows-rotate"></i> Auto Rotate Pages</li>
+                    <li><i class="fa-solid fa-list"></i> Extract Table Data</li>
+                    <li><i class="fa-solid fa-keyboard"></i> Fill PDF Form</li>
+                    <li><i class="fa-solid fa-check-double"></i> Validate Signatures</li>
+                    <li><i class="fa-solid fa-envelope"></i> Email PDF</li>
+                    <li><i class="fa-solid fa-diagram-project"></i> Workflow Builder</li>
+                    <li><i class="fa-solid fa-file-contract"></i> Contract PDF</li>
+                    <li><i class="fa-solid fa-scale-balanced"></i> Legal Compliance</li>
+                    <li><i class="fa-solid fa-user-pen"></i> Initials Tool</li>
+                    <li><i class="fa-solid fa-clipboard-check"></i> Review PDF</li>
+                    <li><i class="fa-solid fa-timeline"></i> Timeline View</li>
+                    <li><i class="fa-solid fa-book-open"></i> Read Mode</li>
+                    <li><i class="fa-solid fa-arrows-to-eye"></i> Focus Mode</li>
+                    <li><i class="fa-solid fa-clone"></i> Clone Pages</li>
+                    <li><i class="fa-solid fa-microscope"></i> Inspect PDF</li>
+                    <li><i class="fa-solid fa-route"></i> Navigation Map</li>
+                    <li><i class="fa-solid fa-arrows-split-up-and-left"></i> Split by Size</li>
+                    <li><i class="fa-solid fa-arrows-split-up-and-left"></i> Split by Pages</li>
+                    <li><i class="fa-solid fa-box-archive"></i> Archive Old PDFs</li>
+                    <li><i class="fa-solid fa-file-shield"></i> Virus Scan PDF</li>
+                    <li><i class="fa-solid fa-person-circle-check"></i> KYC Verification</li>
+                    <li><i class="fa-solid fa-fingerprint"></i> Biometric Sign</li>
+                    <li><i class="fa-solid fa-camera"></i> Scan to PDF</li>
+                    <li><i class="fa-solid fa-mobile-screen-button"></i> Mobile Upload</li>
+                    <li><i class="fa-solid fa-laptop"></i> Desktop Upload</li>
+                    <li><i class="fa-solid fa-globe"></i> Online Share</li>
+                    <li><i class="fa-solid fa-bell"></i> Notifications</li>
+                    <li><i class="fa-solid fa-star"></i> Favorites</li>
+                    <li><i class="fa-solid fa-history"></i> Activity Log</li>
+                    <li><i class="fa-solid fa-toggle-on"></i> Enable Tools</li>
+                    <li><i class="fa-solid fa-toggle-off"></i> Disable Tools</li>
+                    <li><i class="fa-solid fa-square-plus"></i> Add New Tool</li>
+                    <li><i class="fa-solid fa-square-minus"></i> Remove Tool</li>
+                    <li><i class="fa-solid fa-sitemap"></i> Sitemap Tools</li>
+                    <li><i class="fa-solid fa-network-wired"></i> API Integrations</li>
+                    <li><i class="fa-solid fa-plug"></i> Plugin Manager</li>
+                    <li><i class="fa-solid fa-shapes"></i> Shape Editor</li>
+                    <li><i class="fa-solid fa-vector-square"></i> Vector Tools</li>
+                    <li><i class="fa-solid fa-paint-roller"></i> Theme Designer</li>
+                    <li><i class="fa-solid fa-font-awesome"></i> Icon Manager</li>
+                    <li><i class="fa-solid fa-terminal"></i> CLI Tools</li>
+                    <li><i class="fa-solid fa-cloud"></i> Cloud Sync</li>
+                    <li><i class="fa-solid fa-sd-card"></i> Storage Manager</li>
+                    <li><i class="fa-solid fa-robot"></i> AI Summarize PDF</li>
+                    <li><i class="fa-solid fa-brain"></i> AI Extract Data</li>
+                    <li><i class="fa-solid fa-language"></i> AI Translate PDF</li>
+                    <li><i class="fa-solid fa-comments"></i> AI Chat with PDF</li>
+                    <li><i class="fa-solid fa-lightbulb"></i> AI Suggestions</li>
+                    <li><i class="fa-solid fa-magic-wand-sparkles"></i> AI Enhance Scan</li>
+                    <li><i class="fa-solid fa-eye-dropper"></i> Color Picker</li>
+                    <li><i class="fa-solid fa-file-audio"></i> PDF to Audio</li>
+                    <li><i class="fa-solid fa-volume-high"></i> Read Aloud PDF</li>
+                    <li><i class="fa-solid fa-bookmark"></i> Add Bookmarks</li>
+                    <li><i class="fa-solid fa-list-ol"></i> Auto Number Pages</li>
+                    <li><i class="fa-solid fa-tag"></i> Tag Documents</li>
+                    <li><i class="fa-solid fa-filter-circle-dollar"></i> Price Tools</li>
+                    <li><i class="fa-solid fa-user-gear"></i> User Settings</li>
+                    <li><i class="fa-solid fa-shield-virus"></i> Malware Protection</li>
+                    <li><i class="fa-solid fa-vault"></i> Secure Vault</li>
+                    <li><i class="fa-solid fa-file-circle-xmark"></i> Redact PDF</li>
+                    <li><i class="fa-solid fa-mask"></i> Mask Sensitive Data</li>
+                    <li><i class="fa-solid fa-scale-unbalanced"></i> Compare PDFs</li>
+                    <li><i class="fa-solid fa-code-branch"></i> Version Compare</li>
+                    <li><i class="fa-solid fa-file-invoice"></i> Invoice Generator</li>
+                    <li><i class="fa-solid fa-receipt"></i> Receipt Builder</li>
+                    <li><i class="fa-solid fa-money-bill-transfer"></i> Billing Tools</li>
+                    <li><i class="fa-solid fa-wallet"></i> Wallet Integration</li>
+                    <li><i class="fa-solid fa-file-csv"></i> PDF to CSV</li>
+                    <li><i class="fa-solid fa-database"></i> Data Export</li>
+                    <li><i class="fa-solid fa-database"></i> Data Import</li>
+                    <li><i class="fa-solid fa-user-group"></i> Team Management</li>
+                    <li><i class="fa-solid fa-people-arrows"></i> Assign Tasks</li>
+                    <li><i class="fa-solid fa-calendar-check"></i> Schedule Jobs</li>
+                    <li><i class="fa-solid fa-clock"></i> Auto Run Jobs</li>
+                    <li><i class="fa-solid fa-bolt-lightning"></i> Quick Actions</li>
+                    <li><i class="fa-solid fa-boxes-stacked"></i> Batch Processing</li>
+                    <li><i class="fa-solid fa-layer-group"></i> Merge Layers</li>
+                    <li><i class="fa-solid fa-circle-play"></i> Tutorial Videos</li>
+                    <li><i class="fa-solid fa-graduation-cap"></i> Training Center</li>
+                    <li><i class="fa-solid fa-award"></i> Certification</li>
+                    <li><i class="fa-solid fa-bug"></i> Bug Report</li>
+                    <li><i class="fa-solid fa-screwdriver-wrench"></i> Maintenance Tools</li>
+                    <li><i class="fa-solid fa-server"></i> Server Monitor</li>
+                    <li><i class="fa-solid fa-gauge-high"></i> Performance Meter</li>
+                    <li><i class="fa-solid fa-chart-simple"></i> Usage Stats</li>
+                    <li><i class="fa-solid fa-chart-area"></i> Activity Charts</li>
+                    <li><i class="fa-solid fa-power-off"></i> Shutdown Tools</li>
+                    <li><i class="fa-solid fa-circle-nodes"></i> System Nodes</li>
+                    <li><i class="fa-solid fa-memory"></i> Cache Manager</li>
+                    <li><i class="fa-solid fa-trash-can-arrow-up"></i> Restore Files</li>
+                    <li><i class="fa-solid fa-cloud-bolt"></i> Auto Backup</li>
+                    <li><i class="fa-solid fa-cloud-moon"></i> Night Mode Tools</li>
+                    <li><i class="fa-solid fa-sun"></i> Day Mode Tools</li>
+                    <li><i class="fa-solid fa-file-arrow-down"></i> PDF to Word</li>
+                    <li><i class="fa-solid fa-file-arrow-up"></i> Word to PDF</li>
+                    <li><i class="fa-solid fa-image"></i> PDF to JPG</li>
+                    <li><i class="fa-solid fa-images"></i> JPG to PDF</li>
+                    <li><i class="fa-solid fa-file-excel"></i> PDF to Excel</li>
+                    <li><i class="fa-solid fa-file-powerpoint"></i> PDF to PPT</li>
+                    <li><i class="fa-solid fa-file-lines"></i> PDF to Text</li>
+                    <li><i class="fa-solid fa-eye"></i> View PDF</li>
+                    <li><i class="fa-solid fa-wand-magic-sparkles"></i> OCR PDF</li>
+                    <li><i class="fa-solid fa-trash"></i> Delete Pages</li>
+                    <li><i class="fa-solid fa-copy"></i> Duplicate Pages</li>
+                    <li><i class="fa-solid fa-crop"></i> Crop PDF</li>
+                    <li><i class="fa-solid fa-highlighter"></i> Highlight Text</li>
+                    <li><i class="fa-solid fa-pen"></i> Draw on PDF</li>
+                    <li><i class="fa-solid fa-note-sticky"></i> Add Notes</li>
+                    <li><i class="fa-solid fa-water"></i> Add Watermark</li>
+                    <li><i class="fa-solid fa-print"></i> Print PDF</li>
+                    <li><i class="fa-solid fa-download"></i> Download PDF</li>
+                    <li><i class="fa-solid fa-upload"></i> Upload PDF</li>
+                    <li><i class="fa-solid fa-file-circle-check"></i> Validate PDF</li>
+                    <li><i class="fa-solid fa-magnifying-glass"></i> Search in PDF</li>
+                    <li><i class="fa-solid fa-language"></i> Translate PDF</li>
+                    <li><i class="fa-solid fa-spell-check"></i> Spell Check</li>
+                    <li><i class="fa-solid fa-folder-open"></i> Open PDF</li>
+                    <li><i class="fa-solid fa-file-circle-plus"></i> Add Pages</li>
+                    <li><i class="fa-solid fa-file-circle-minus"></i> Remove Pages</li>
+                    <li><i class="fa-solid fa-sort"></i> Reorder Pages</li>
+                    <li><i class="fa-solid fa-layer-group"></i> Layer Manager</li>
+                    <li><i class="fa-solid fa-chart-line"></i> Analyze PDF</li>
+                    <li><i class="fa-solid fa-shield-halved"></i> Secure PDF</li>
+                    <li><i class="fa-solid fa-user-lock"></i> Restrict Editing</li>
+                    <li><i class="fa-solid fa-file-signature"></i> Sign PDF</li>
+                    <li><i class="fa-solid fa-id-card"></i> Verify Identity</li>
+                    <li><i class="fa-solid fa-clock-rotate-left"></i> Version History</li>
+                    <li><i class="fa-solid fa-cloud-arrow-up"></i> Cloud Upload</li>
+                    <li><i class="fa-solid fa-cloud-arrow-down"></i> Cloud Download</li>
+                    <li><i class="fa-solid fa-link"></i> Share Link</li>
+                    <li><i class="fa-solid fa-users"></i> Collaborate</li>
+                    <li><i class="fa-solid fa-comment-dots"></i> Comment PDF</li>
+                    <li><i class="fa-solid fa-receipt"></i> Invoice PDF</li>
+                    <li><i class="fa-solid fa-qrcode"></i> Add QR Code</li>
+                    <li><i class="fa-solid fa-barcode"></i> Add Barcode</li>
+                    <li><i class="fa-solid fa-font"></i> Change Font</li>
+                    <li><i class="fa-solid fa-palette"></i> Change Colors</li>
+                    <li><i class="fa-solid fa-align-left"></i> Align Text</li>
+                    <li><i class="fa-solid fa-table"></i> Edit Tables</li>
+                    <li><i class="fa-solid fa-columns"></i> Multi Column Layout</li>
+                    <li><i class="fa-solid fa-ruler-combined"></i> Measure PDF</li>
+                    <li><i class="fa-solid fa-calculator"></i> Calculate in PDF</li>
+                    <li><i class="fa-solid fa-robot"></i> Auto Process</li>
+                    <li><i class="fa-solid fa-bolt"></i> Fast Optimize</li>
+                    <li><i class="fa-solid fa-broom"></i> Clean PDF</li>
+                    <li><i class="fa-solid fa-filter"></i> Filter Content</li>
+                    <li><i class="fa-solid fa-sliders"></i> Advanced Settings</li>
+                    <li><i class="fa-solid fa-gears"></i> Tool Settings</li>
+                    <li><i class="fa-solid fa-circle-info"></i> PDF Info</li>
+                    <li><i class="fa-solid fa-database"></i> Archive PDF</li>
+                    <li><i class="fa-solid fa-hard-drive"></i> Backup PDF</li>
+                    <li><i class="fa-solid fa-file-zipper"></i> Zip PDF</li>
+                    <li><i class="fa-solid fa-file-export"></i> Export PDF</li>
+                    <li><i class="fa-solid fa-file-import"></i> Import PDF</li>
+                    <li><i class="fa-solid fa-code"></i> PDF API</li>
+                    <li><i class="fa-solid fa-terminal"></i> Developer Tools</li>
+                    <li><i class="fa-solid fa-headset"></i> Support</li>
+                    <li><i class="fa-solid fa-circle-question"></i> Help</li>
+                </ul>
+            </div>
+
+            <div id="start-content">
+
+
+                <div class="start-content-header">
+                    <h3>Recent Use / All Tools</h3>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input type="text" placeholder="Search tools...">
+
+                    </div>
+                </div>
+
+                <!-- Reusing the Grid Logic but styled as a list/grid hybrid -->
+                <div class="tools-grid-desktop" id="tools-list">
+                    <!-- Tools will be injected here by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Editor Screen (Hidden by default, shown when tool selected) -->
+        <div id="editor-screen" style="display: none;">
+
+            <!-- Ribbon Navigation -->
+            <div id="ribbon-container">
+                <div class="ribbon-tabs">
+                    <div class="ribbon-tab file-tab" id="tab-file">File</div>
+                    <div class="ribbon-tab active" data-tab="home">Home</div>
+                    <div class="ribbon-tab" data-tab="convert">Convert</div>
+                    <div class="ribbon-tab" data-tab="edit">Edit</div>
+                    <div class="ribbon-tab" data-tab="view">View</div>
+                    <div class="ribbon-tab" data-tab="help">Help</div>
+                </div>
+
+                <div class="ribbon-toolbar" id="ribbon-toolbar">
+                    <!-- Dynamic Toolbar Content based on Tab -->
+                    <!-- Example: Home Tab -->
+                    <div class="ribbon-group" id="group-common">
+                        <button class="ribbon-btn" onclick="app.openStartScreen()">
+                            <i class="fa-regular fa-folder-open"></i>
+                            <span>Open</span>
+                        </button>
+                        <button class="ribbon-btn" id="btn-save">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            <span>Save</span>
+                        </button>
+                    </div>
+                    <div class="ribbon-divider"></div>
+                    <div class="ribbon-group" id="group-tools">
+                        <button class="ribbon-btn" onclick="app.loadTool('compress-pdf')">
+                            <i class="fa-solid fa-file-invoice"></i>
+                            <span>Compress</span>
+                        </button>
+                        <button class="ribbon-btn" onclick="app.loadTool('merge-split-pdf')">
+                            <i class="fa-solid fa-files"></i>
+                            <span>Merge/Split</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Workspace -->
+            <div id="workspace-area">
+                <div id="tool-container">
+                    <!-- Tool HTML injected here (replaces modal content) -->
+                    <div class="empty-workspace">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <p>Select a tool or open a file to begin.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Bar -->
+            <div id="status-bar">
+                <div class="status-left">Ready</div>
+                <div class="status-right">
+                    <span>100%</span>
+                    <i class="fa-solid fa-minus"></i>
+                    <div class="zoom-slider"></div>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modals (hidden, used for quick alerts or specialized dialogs if needed) -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>

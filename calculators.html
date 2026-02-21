@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF & Image Master Suite - Calculators</title>
+    <!-- Outfit Font (Premium look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PDF Libraries (Kept for consistency) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- App Container -->
+    <div id="app-container">
+
+        <!-- Standard Window Title Bar (Mockup) -->
+        <div id="title-bar">
+            <div class="title-bar-left">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Icon" class="app-icon">
+                <span class="app-title">PDF & Image Master Suite - Calculators</span>
+            </div>
+            <div class="title-bar-right">
+                <div class="window-control minimize"><i class="fa-solid fa-minus"></i></div>
+                <div class="window-control maximize"><i class="fa-regular fa-square"></i></div>
+                <div class="window-control close"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+        </div>
+
+        <!-- 1. Start Screen (Default View) -->
+        <div id="start-screen">
+            <div id="start-sidebar">
+                <div class="sidebar-header">
+                    <h2>Navigation</h2>
+                </div>
+                <ul class="sidebar-menu">
+                    <li onclick="window.location.href='index.html'"><i class="fa-solid fa-house"></i> Home (PDF Tools)
+                    </li>
+                    <li onclick="window.location.href='business.html'"><i class="fa-solid fa-briefcase"></i> Business
+                        Tools</li>
+                    <li class="active"><i class="fa-solid fa-calculator"></i> Business Calculators</li>
+                </ul>
+            </div>
+
+            <div id="start-content">
+                <div class="start-content-header">
+                    <h3>Business Calculators</h3>
+                </div>
+                <!-- Business Calculators Grid -->
+                <div class="tools-grid-desktop" style="margin-bottom: 40px;">
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-business')">
+                        <div class="tool-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <div class="tool-info">
+                            <h4>Business Calculator</h4>
+                            <p>General calculations</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-gst')">
+                        <div class="tool-icon"><i class="fa-solid fa-building-columns"></i></div>
+                        <div class="tool-info">
+                            <h4>GST Calculator</h4>
+                            <p>Calculate GST</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-pnl')">
+                        <div class="tool-icon"><i class="fa-solid fa-coins"></i></div>
+                        <div class="tool-info">
+                            <h4>Profit & Loss</h4>
+                            <p>Calculate P&L</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-roi')">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="tool-info">
+                            <h4>ROI Calculator</h4>
+                            <p>Return on Investment</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-loan')">
+                        <div class="tool-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <div class="tool-info">
+                            <h4>Loan / EMI Calculator</h4>
+                            <p>Calculate payments</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-tax')">
+                        <div class="tool-icon"><i class="fa-solid fa-percent"></i></div>
+                        <div class="tool-info">
+                            <h4>Tax Calculator</h4>
+                            <p>Estimate taxes</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-breakeven')">
+                        <div class="tool-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div class="tool-info">
+                            <h4>Break-Even Calculator</h4>
+                            <p>Analysis tool</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-cashflow')">
+                        <div class="tool-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <div class="tool-info">
+                            <h4>Cash Flow Calculator</h4>
+                            <p>Track cash flow</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-pricing')">
+                        <div class="tool-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="tool-info">
+                            <h4>Pricing / Margin</h4>
+                            <p>Set prices</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-cost')">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                        <div class="tool-info">
+                            <h4>Cost Analysis</h4>
+                            <p>Analyze costs</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-tvm')">
+                        <div class="tool-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="tool-info">
+                            <h4>TVM Calculator</h4>
+                            <p>Time Value of Money</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-payroll')">
+                        <div class="tool-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <div class="tool-info">
+                            <h4>Payroll Calculator</h4>
+                            <p>Calculate salary</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-logistics')">
+                        <div class="tool-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div class="tool-info">
+                            <h4>Logistics Cost</h4>
+                            <p>Calculate shipping</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-retail')">
+                        <div class="tool-icon"><i class="fa-solid fa-store"></i></div>
+                        <div class="tool-info">
+                            <h4>Retail Markup</h4>
+                            <p>Calculate markup</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-list-item" onclick="app.loadTool('calc-workingcapital')">
+                        <div class="tool-icon"><i class="fa-solid fa-coins"></i></div>
+                        <div class="tool-info">
+                            <h4>Working Capital</h4>
+                            <p>Calculate capital</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
